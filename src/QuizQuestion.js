@@ -14,6 +14,9 @@ class QuizQuestion extends Component {
         </section>
         <section className="buttons">
           <ul>
+            {this.props.quiz_question.map((questions) => {
+              return <li key={questions.id}>{questions.answer_options}</li>;
+            })}
             <QuizQuestionButton
               button_text={this.props.quiz_question.answer_options[0]}
             />
