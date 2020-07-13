@@ -7,24 +7,24 @@ class Quiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quiz_position: -1,
+      quiz_position: 1,
     };
   }
 
   render() {
-    const isQuizEnd = () => {
-      debugger;
-      if (quizData.quiz_questions[-1] === quizData.quiz_questions.length) {
-        return <QuizEnd />;
-      }
-    };
+    const isQuizEnd = ((this.state.quiz_position - 1) === quizData.quiz_questions.length)
+    
 
     return (
       <div>
         {isQuizEnd ? (
-          true
+          <QuizEnd />
         ) : (
-          <QuizQuestion quiz_question={quizData.quiz_questions[0]} />
+          <QuizQuestion
+            quiz_question={
+              quizData.quiz_questions[this.state.quiz_position - 1]
+            }
+          />
         )}
       </div>
     );
